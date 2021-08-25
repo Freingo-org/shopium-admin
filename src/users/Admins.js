@@ -1,39 +1,36 @@
 import * as React from "react";
 import { List, Datagrid, TextField, EmailField, Edit, Create, SimpleForm, TextInput, EditButton } from 'react-admin';
 
-export const UserList = props => (
+export const AdminList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="name" />
             <TextField source="username" />
             <EmailField source="email" />
-            <TextField source="phone" />
+            <TextField source="password" />
         </Datagrid>
     </List>
 );
-const UserName = ({ record }) => {
+const AdminName = ({ record }) => {
     return <span>Post {record ? `"${record.name}"` : ''}</span>;
 };
-export const UserEdit = (props) => (
-    <Edit title={<UserName />} {...props}>
+export const AdminEdit = (props) => (
+    <Edit title={<AdminName />} {...props}>
         <SimpleForm>
-            <TextInput source="name" />
             <TextInput source="username"  />
             <TextInput source="email" />
-            <TextInput source="phone" />
-            <EditButton basePath="/users" />
+            <TextInput source="password"/>
+            <EditButton basePath="/admins" />
         </SimpleForm>
     </Edit>
 );
 
-export const UserCreate = (props) => (
+export const AdminCreate = (props) => (
     <Create title="Create a Post" {...props}>
         <SimpleForm>
-            <TextInput source="name" />
             <TextInput source="username"  />
             <TextInput source="email" />
-            <TextInput source="phone" />
+            <TextInput source="password" />
         </SimpleForm>
     </Create>
 );

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { userLogin, useNotify, Notification, defaultTheme } from 'react-admin';
+import { Redirect } from 'react-router';
+import { userLogin, useNotify, Notification, defaultTheme, useLogin } from 'react-admin';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
@@ -8,12 +9,13 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const Login = ({ theme }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const notify = useNotify();
+    const login = useLogin();
     const submit = e => {
         
         // will call authProvider.login({ email, password })
         console.log(email,password)
-        userLogin({ email, password })
+        login({ email, password })
+        
     };
     const container = {
         height: '100vh',
